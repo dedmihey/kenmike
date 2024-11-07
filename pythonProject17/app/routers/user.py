@@ -16,7 +16,6 @@ async def all_users(db: Annotated[Session, Depends(get_db)]):
     return users
 
 
-
 @router.get('/user_id')
 async def user_by_id(db: Annotated[Session, Depends(get_db)], user_id: int):
     user = db.scalars(select(User).where(User.id == user_id))
@@ -30,8 +29,6 @@ async def user_by_id(db: Annotated[Session, Depends(get_db)], user_id: int):
     return {'status_code': status.HTTP_201_CREATED, 'transaction': 'Successful'}
 
 
-
-
 @router.post('/create')
 async def create_user(db: Annotated[Session, Depends(get_db)], create_user: CreateUser):
     db.execute(insert(User).values(username=create_user.username,
@@ -39,9 +36,8 @@ async def create_user(db: Annotated[Session, Depends(get_db)], create_user: Crea
                                    lastname=create_user.lastname,
                                    age=create_user.age,
                                    slug=slugify(create_user.username)))
-    db.cummit()
+    db.commit()
     return {'status_code': status.HTTP_201_CREATED, 'transaction': 'Successful'}
-
 
 
 @router.put('/update')
@@ -53,14 +49,11 @@ async def update_user(db: Annotated[Session, Depends(get_db)], update_user: Upda
             status_code=status.HTTP_404_NOT_FOUND,
             detail='User was not found'
         )
-    db.execute(update(User).values(firstname=create_user.firstname,
-                                   lastname=create_user.lastname,
-                                   age=create_user.age,
-                                   slug=slugify(create_user.username)))
-    db.cummit()
+    db.execute(update(User).values(firstname=update_user.firstname,
+                                   lastname=update_user.lastname,
+                                   age=update_user.age))
+    db.commit()
     return {'status_code': status.HTTP_201_CREATED, 'transaction': 'Successful'}
-
-
 
 
 @router.delete('/delete')
@@ -72,5 +65,5 @@ async def delete_user(db: Annotated[Session, Depends(get_db)], user_id: int):
             detail='User was not found'
         )
     db.execute(update(User).where(User.id == user_id))
-    db.cummit()
+    db.commit()
     return {'status_code': status.HTTP_201_CREATED, 'transaction': 'Successful'}
