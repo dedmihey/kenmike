@@ -21,7 +21,7 @@ from django.urls import path
 #
 # sys.path.append(os.path.join(os.getcwd(), ".."))
 from task2.views import index, index2
-from task3.views import index11, index12, index13
+from task4.views import index11, index12, index13
 
 urlpatterns = [
     path('admin/', admin.site.urls),
