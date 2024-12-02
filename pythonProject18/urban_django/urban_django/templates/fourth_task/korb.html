@@ -1,0 +1,16 @@
+{% extends "fourth_task/menu.html" %}
+
+{% block pagename %}
+    <h1>Корзина</h1>
+{% endblock %}
+
+{% block menu %}
+    {{block.super}}
+{% endblock %}
+
+{% block content %}
+    <h2>Ваша корзина пуста</h2>
+    <form action="/haupt/">
+    <button style="font-size:20px">На главную</button>
+    </form>
+{% endblock %}
