@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'task2',
     'task3',
     'task4',
+    'task5',
 ]
 
 MIDDLEWARE = [
@@ -52,7 +53,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'urban_django.urls'
+ROOT_URLCONF = 'task5.urls'
 
 TEMPLATES = [
     {
