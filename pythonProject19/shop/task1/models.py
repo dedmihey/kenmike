@@ -7,6 +7,11 @@ class Buyer(models.Model):
     balance = models.DecimalField(max_digits=8, decimal_places=2, default='default balance')
     age = models.IntegerField(default='default age')
 
+    def __str__(self):
+        return self.name
+
+    objects = models.Manager()
+
 
 class Game(models.Model):
     title = models.CharField(max_length=20)
@@ -15,3 +20,16 @@ class Game(models.Model):
     description = models.TextField(default='default description')
     age_limited = models.BooleanField(default=False)
     buyer = models.ManyToManyField(Buyer, related_name='games')
+
+
+class Kessel(models.Model):
+    title = models.CharField(max_length=20)
+    cost = models.DecimalField(max_digits=10, decimal_places=2, default='default cost')
+    power = models.IntegerField(default='default power')
+    description = models.TextField(default='default description')
+    # age_limited = models.BooleanField(default=False)
+    buyer = models.ManyToManyField(Buyer, related_name='kesseln')
+    objects = models.Manager()
+
+    def __str__(self):
+        return self.title

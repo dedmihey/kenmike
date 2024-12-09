@@ -1,0 +1,17 @@
+{% extends "one_task/menu.html" %}
+
+{% block pagename %}
+    <h1>Котлы</h1>
+{% endblock %}
+
+{% block menu %}
+    {{block.super}}
+{% endblock %}
+
+{% block content %}
+    {{block.super}}
+    <form action="/haupt/">
+    <button style="font-size:20px">На главную</button>
+    </form>
+{% endblock %}
+
