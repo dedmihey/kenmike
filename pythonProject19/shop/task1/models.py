@@ -33,3 +33,10 @@ class Kessel(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class News(models.Model):
+    title = models.CharField(max_length=20)
+    content = models.TextField(default='default content')
+    date = models.DateTimeField(default='default date')
+    objects = models.Manager()

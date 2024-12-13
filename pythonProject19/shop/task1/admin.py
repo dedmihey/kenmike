@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Game, Buyer
+from .models import Game, Buyer, News
 
 # Register your models here.
 @admin.register(Game)
@@ -17,3 +17,6 @@ class BuyerAdmin(admin.ModelAdmin):
     list_filter = ('balance', 'age',)
     list_per_page = (30)
     readonly_fields = ['balance']
+
+
+admin.site.register(News)

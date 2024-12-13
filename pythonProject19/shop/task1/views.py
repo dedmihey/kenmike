@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator
 from django.http import HttpResponse
 from .forms import UserRegister
 from .models import *
@@ -85,3 +86,11 @@ def sign_up_by_django(request):
     print(context)
     # print(users)
     return render(request, 'one_task/registration_page.html', context=context)
+
+
+def news(request):
+    news = News.objects.all()
+    paginator = Paginator(news, 5)
+    page_number = request.Get.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'one_task/news.html', {'page_obj': page_obj, 'news': news})

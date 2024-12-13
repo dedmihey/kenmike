@@ -22,6 +22,7 @@ from django.urls import path
 # from .views import index, index2
 from .views import index11, index12, index13
 from .views import sign_up_by_django, sign_up_by_html
+from .views import news
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,4 +32,5 @@ urlpatterns = [
     path('haupt/kesseln/', index12),
     path('haupt/korb/', index13),
     path('django_sign_up/', sign_up_by_django),
+    path('platform/news/', news),
 ]
