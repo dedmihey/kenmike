@@ -90,7 +90,7 @@ def sign_up_by_django(request):
 
 def news(request):
     news = News.objects.all()
-    paginator = Paginator(news, 5)
-    page_number = request.Get.get('page')
+    paginator = Paginator(news, 3)
+    page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    return render(request, 'one_task/news.html', {'page_obj': page_obj, 'news': news})
+    return render(request, 'one_task/news.html', {'page_obj': page_obj})

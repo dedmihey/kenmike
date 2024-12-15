@@ -36,7 +36,7 @@ class Kessel(models.Model):
 
 
 class News(models.Model):
-    title = models.CharField(max_length=20)
+    title = models.CharField(max_length=50)
     content = models.TextField(default='default content')
-    date = models.DateTimeField(default='default date')
+    date = models.DateTimeField(auto_now=True)
     objects = models.Manager()
