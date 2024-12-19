@@ -40,3 +40,33 @@ class News(models.Model):
     content = models.TextField(default='default content')
     date = models.DateTimeField(auto_now=True)
     objects = models.Manager()
+
+
+class Controllers(models.Model):
+    name = models.CharField(max_length=30)
+    manufacturer = models.CharField(max_length=30)
+    cost = models.DecimalField(max_digits=10, decimal_places=2)
+    objects = models.Manager()
+
+    def __str__(self):
+        return self.name
+
+
+class Burners(models.Model):
+    title = models.CharField(max_length=30)
+    power = models.IntegerField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    objects = models.Manager()
+
+    def __str__(self):
+        return self.title
+
+
+class Children(models.Model):
+    name = models.CharField(max_length=10)
+    edge = models.IntegerField()
+    occupation = models.CharField(max_length=10)
+    objects = models.Manager()
+
+    def __str__(self):
+        return self.name
