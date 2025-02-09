@@ -87,9 +87,15 @@ class PriceMachine():
     #     '''
 
     def find_text(self, df_sum):
-        text = input("Введите фрагмент наименования товара для поиска: ").lower()
-        filtered_df = df_sum[df_sum['наименование'].str.contains(text)]
-        return (filtered_df)
+        while True:
+            text = input("Введите фрагмент наименования товара для поиска или exit для выхода: ").lower()
+            if text == 'exit':
+                break
+            filtered_df = df_sum[df_sum['наименование'].str.contains(text)]
+            if filtered_df['наименование'].count() != 0:
+                print(filtered_df)
+            else:
+                print('Ничего не найдено')
 
 
 pm = PriceMachine()
@@ -99,6 +105,6 @@ print(my_df_sum)
 '''
     Логика работы программы
 '''
-print(pm.find_text(my_df_sum))
+pm.find_text(my_df_sum)
 print('the end')
 # print(pm.export_to_html())
